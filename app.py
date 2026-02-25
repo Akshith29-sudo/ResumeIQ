@@ -5,13 +5,7 @@ import spacy
 import re
 
 import spacy
-from spacy.cli import download
-
-try:
-    nlp = spacy.load("en_core_web_sm")
-except:
-    download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
+nlp = spacy.blank("en")
 
 st.title("ResumeIQ - Smart Resume Analyzer")
 
@@ -33,7 +27,6 @@ if uploaded_file is not None:
 
     word_count = len([token for token in doc if token.is_alpha])
     sentence_count = len(list(doc.sents))
-
     st.subheader("Basic Analysis")
     st.write("Total Words:", word_count)
     st.write("Total Sentences:", sentence_count)
