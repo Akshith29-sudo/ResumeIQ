@@ -4,7 +4,14 @@ import PyPDF2
 import spacy
 import re
 
-nlp = spacy.load("en_core_web_sm")
+import spacy
+from spacy.cli import download
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 st.title("ResumeIQ - Smart Resume Analyzer")
 
